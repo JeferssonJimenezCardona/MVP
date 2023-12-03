@@ -1,11 +1,10 @@
 import streamlit as st
 import matplotlib.pyplot as plt
-import seaborn as sns
 from difflib import get_close_matches
 from rapidfuzz import process
 
 st.set_page_config(
-    page_title="Fuzzy Matching con Streamlit",
+    page_title="MVP decameron",
     page_icon=":mag:",
     layout="wide",
     initial_sidebar_state="expanded",  # Expande la barra lateral por defecto
@@ -48,14 +47,14 @@ def get_best_match(user_input, choices, method="difflib"):
         return None, 0
 
 def main():
-    st.title("Proof of concept: DataHarbor ID/ML")
+    st.title("Proof of concept: DataHarbor ID/ML V 1.0 ")
 
     st.write("### Expresión Matemática - Coeficiente de Similitud de Coseno:")
     st.write("$$Similarity(A, B) = \\frac{2 \\times LCS(A, B)}{len(A) + len(B)}$$")
 
-    nombres = ["Jefersson Jimenez Cardona", "Jefersson Gimenez Carmona", "Jennny Castellano", "Victor Hoyos", "Juan Sebastian Palomares"]
-    correos = ["jefejica@gmail.com", "Prueba@hotmail.com", "jefejica@hotmail.com"]
-    cedulas = ["1020439778", "11524367891"]
+    nombres = ["Ana María Rodríguez","Roberto Gómez Pérez","María José Fernández","Alejandro Sánchez","Laura Ramírez García"]
+    correos = ["ana.rodriguez@example.com","roberto.gomez@example.com","maria.fernandez@example.com","alejandro.sanchez@example.com","laura.ramirez@example.com"]
+    cedulas = ["1234567890","0987654321","2468013579","1357924680","9876543210"]
 
     nombre_usuario = st.sidebar.text_input("Ingrese el nombre:", "")
     correo_usuario = st.sidebar.text_input("Ingrese el correo:", "")
@@ -86,7 +85,7 @@ def main():
     ax.plot(list(plot_data.keys()), list(plot_data.values()), marker='o', linestyle='-', color='b')
     ax.set_title("Score de Coincidencia")
     ax.set_ylabel("Puntaje")
-    ax.set_xlabel("Métrica")
+    ax.set_xlabel("Eje X")
     st.pyplot(fig)
 
 if __name__ == "__main__":
