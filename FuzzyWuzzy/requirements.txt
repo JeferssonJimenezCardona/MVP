@@ -1,4 +1,4 @@
 matplotlib
 seaborn
-fuzzywuzzy
+fuzzywuzzy==0.18.0
 
