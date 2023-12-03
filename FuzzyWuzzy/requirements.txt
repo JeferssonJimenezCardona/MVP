@@ -3,4 +3,4 @@ seaborn
 difflib
 streamlit==1.10.0
 rapidfuzz==1.7.2
-
+rapidfuzz import process
