@@ -2,7 +2,7 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import seaborn as sns
 from difflib import get_close_matches
-
+from rapidfuzz import process
 
 st.set_page_config(
     page_title="Fuzzy Matching con Streamlit",
