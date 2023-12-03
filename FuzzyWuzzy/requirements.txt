@@ -1,3 +1,4 @@
+streamlit
 fuzzywuzzy
 scikit-learn
 matplotlib
