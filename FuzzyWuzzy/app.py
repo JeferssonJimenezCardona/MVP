@@ -2,12 +2,13 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import seaborn as sns
 from difflib import get_close_matches
+from rapidfuzz import process
 
 st.set_page_config(
     page_title="Fuzzy Matching con Streamlit",
     page_icon=":mag:",
     layout="wide",
-    initial_sidebar_state="expanded",
+    initial_sidebar_state="expanded",  # Expande la barra lateral por defecto
 )
 
 color_negro = "#000000"
@@ -33,10 +34,16 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-def get_best_match(user_input, choices):
-    matches = get_close_matches(user_input, choices)
-    if matches:
-        return matches[0], 100  # difflib no proporciona puntajes, así que se establece en 100
+def get_best_match(user_input, choices, method="difflib"):
+    if method == "difflib":
+        matches = get_close_matches(user_input, choices)
+        if matches:
+            return matches[0], 100  # difflib no proporciona puntajes, así que se establece en 100
+        else:
+            return None, 0
+    elif method == "rapidfuzz":
+        result = process.extractOne(user_input, choices)
+        return result[0], result[1]
     else:
         return None, 0
 
@@ -54,9 +61,9 @@ def main():
     correo_usuario = st.sidebar.text_input("Ingrese el correo:", "")
     cedula_usuario = st.sidebar.text_input("Ingrese la cédula:", "")
 
-    aproximacion_nombre, puntaje_nombre = get_best_match(nombre_usuario, nombres)
-    aproximacion_correo, puntaje_correo = get_best_match(correo_usuario, correos)
-    aproximacion_cedula, puntaje_cedula = get_best_match(cedula_usuario, cedulas)
+    aproximacion_nombre, puntaje_nombre = get_best_match(nombre_usuario, nombres, method="rapidfuzz")
+    aproximacion_correo, puntaje_correo = get_best_match(correo_usuario, correos, method="rapidfuzz")
+    aproximacion_cedula, puntaje_cedula = get_best_match(cedula_usuario, cedulas, method="rapidfuzz")
 
     st.subheader("Resultado de Aproximación para Nombre:")
     st.write(f"Entrada del usuario: {nombre_usuario}")
