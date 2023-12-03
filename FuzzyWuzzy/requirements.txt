@@ -2,3 +2,5 @@ matplotlib
 seaborn
 difflib
 rapidfuzz
+streamlit==1.10.0
+rapidfuzz==1.7.2
