@@ -1,4 +1,4 @@
 matplotlib
 seaborn
-fuzzywuzzy==0.18.0
-
+difflib
+rapidfuzz
