@@ -5,3 +5,4 @@ seaborn
 pycaret
 numpy==1.23
 pandas==1.5.3
+git+git://github.com/seatgeek/fuzzywuzzy.git@0.18.0#egg=fuzzywuzzy
