@@ -1,7 +1,7 @@
 import streamlit as st
 import matplotlib.pyplot as plt
 import seaborn as sns
-from fuzzywuzzy import process
+# from fuzzywuzzy import process
 st.set_page_config(
     page_title="Fuzzy Matching con Streamlit",
     page_icon=":mag:",
