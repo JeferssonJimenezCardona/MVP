@@ -1,5 +1,5 @@
 streamlit
-fuzzywuzzy
+pip install fuzzywuzzy
 scikit-learn
 matplotlib
 seaborn
